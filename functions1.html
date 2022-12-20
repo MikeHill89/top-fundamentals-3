@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title></title>
+
+<script>
+
+const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+const para = document.createElement('p');
+const section = document.querySelector("section");
+section.innerHTML = "";
+
+// Add your code here
+
+function chooseName() {
+   getRandomName = Math.floor(Math.random() * 8);
+   para.textContent = names[getRandomName];
+		console.log(para.textContent);
+		section.appendChild(para);
+}
+
+// Don't edit the code below here!
+</script>
+
+	</head>
+
+	<body>
+		<section>
+			<h1>MDN Functions Skill Test</h1>
+			<button onclick="chooseName()">Random Name</button>
+			<p></p>
+		</section>
+	</body>
+
+</html>
+
+    
