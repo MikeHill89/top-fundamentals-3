@@ -17,15 +17,26 @@ const para = document.createElement('p');
 // Add your code here
 
 function random(startrange,endrange){
+
+	/* Generates a random number between 0 and 1 then multiplies it by taking the startrange - endrange + 1 and then adds the endrange.
+	The +1 is to make the endrange inclusive.
+	For example if you wouldn't include the +1 and you would use a range of 1 to 5, then only 1,2,3,4 would be used.
+	
+	The  + endrange at the end adds the value of endrange to the random number making sure it is shifted up to the numbers in between 
+	the start and endrange. Without the + endrange part of the expression the variable could contain a value of 0 to 1 exclusive. 
+	However by adding the endrange, the number is then shifted up.
+		*/
+	let randomNumber = Math.random() * (startrange - endrange +1) + endrange;
+
 	if (startrange >8 || startrange <0 || endrange >8 || endrange <0) {
 		alert('start number or end number cannot be higher than 8 or negative numbers');
 	} else {
-		console.log("Your start and end ranges are in order"); // generate random number between start and endrange here and return it.
+		//console.log("Your start and end ranges are in order"); 
+		 console.log(Math.floor(randomNumber));
 	}
 }
 
 function chooseName() {
-  getRandomName = Math.floor(Math.random() * 8);
 	const section = document.querySelector('section');
   para.textContent = names[getRandomName];
 	console.log(para.textContent);
