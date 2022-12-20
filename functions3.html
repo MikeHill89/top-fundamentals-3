@@ -31,7 +31,9 @@ function random(startrange,endrange){
 	if (startrange >8 || startrange <0 || endrange >8 || endrange <0) {
 		alert('start number or end number cannot be higher than 8 or negative numbers');
 	} else {
-		//console.log("Your start and end ranges are in order"); 
+		/*Here the console log uses the Math.floor() method to round the random number down to the nearest whole number.
+		It takes the result returned by the randomNumber variable as an argument and then returns the nearest whole number.
+			*/
 		 console.log(Math.floor(randomNumber));
 	}
 }
