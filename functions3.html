@@ -28,7 +28,7 @@ function random(min,max){
 		*/
 	let randomNumber = Math.random() * (max - min +1) + min;
 	//Here logical operators make sure the min or max value is not negative or bigger than 8. Min can also not be bigger then max
-	if (max >8 || max <0 || max >8 || max <0 || min > max) {
+	if (max >8 || max <0 || max >8 || max <0 || min > max || min === max) {
 		alert('start number or end number cannot be higher than 8 or negative numbers. Min can also not exceed Max');
 	} else {
 		/*Here the console log uses the Math.floor() method to round the random number down to the nearest whole number.
