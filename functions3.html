@@ -16,7 +16,7 @@ const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert
 const para = document.createElement('p');
 // Add your code here
 
-function random(startrange,endrange){
+function random(min,max){
 
 	/* Generates a random number between 0 and 1 then multiplies it by taking the startrange - endrange + 1 and then adds the endrange.
 	The +1 is to make the endrange inclusive.
@@ -26,10 +26,10 @@ function random(startrange,endrange){
 	the start and endrange. Without the + endrange part of the expression the variable could contain a value of 0 to 1 exclusive. 
 	However by adding the endrange, the number is then shifted up.
 		*/
-	let randomNumber = Math.random() * (startrange - endrange +1) + endrange;
-
-	if (startrange >8 || startrange <0 || endrange >8 || endrange <0) {
-		alert('start number or end number cannot be higher than 8 or negative numbers');
+	let randomNumber = Math.random() * (max - min +1) + min;
+	//Here logical operators make sure the min or max value is not negative or bigger than 8. Min can also not be bigger then max
+	if (max >8 || max <0 || max >8 || max <0 || min > max) {
+		alert('start number or end number cannot be higher than 8 or negative numbers. Min can also not exceed Max');
 	} else {
 		/*Here the console log uses the Math.floor() method to round the random number down to the nearest whole number.
 		It takes the result returned by the randomNumber variable as an argument and then returns the nearest whole number.
@@ -37,10 +37,11 @@ function random(startrange,endrange){
 		 console.log(Math.floor(randomNumber));
 	}
 }
-
-function chooseName() {
+//continue here
+function chooseName(names) {
 	const section = document.querySelector('section');
-  para.textContent = names[getRandomName];
+	let index = random(0, names.length -1);
+  para.textContent = names[index];
 	console.log(para.textContent);
 	section.appendChild(para);
 }
