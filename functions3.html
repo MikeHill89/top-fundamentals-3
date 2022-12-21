@@ -18,13 +18,17 @@ const para = document.createElement('p');
 
 function random(min,max){
 
-	/* Generates a random number between 0 and 1 then multiplies it by taking the startrange - endrange + 1 and then adds the endrange.
+	/* Generates a random number between 0 and 1 then multiplies it using (max - min + 1). 
+	Then it adds the min value to the result of the previous multiplication (higher operator precedence).
 	The +1 is to make the endrange inclusive.
-	For example if you wouldn't include the +1 and you would use a range of 1 to 5, then only 1,2,3,4 would be used.
-	
-	The  + endrange at the end adds the value of endrange to the random number making sure it is shifted up to the numbers in between 
-	the start and endrange. Without the + endrange part of the expression the variable could contain a value of 0 to 1 exclusive. 
-	However by adding the endrange, the number is then shifted up.
+	For example if you wouldn't include the +1 and you would use a range of 2 to 10, then only 2,3,4,5,6,7,8 and 9 would be used.
+	The function is designed to never exceed the max value because the result of Math.random() * (max - min + 1) is always less than (max - min + 1), and min is added to this result.
+	For example, if max is 10 and min is 2, the range of possible values is 2 to 10. 
+	The result of Math.random() * (max - min + 1) will always be a decimal value between 0 and 8, because (max - min + 1) 
+	is equal to (10 - 2 + 1), which is equal to 8. *need to clarify this*
+
+	When min is added to this result, the final value will always be between 2 and 10, inclusive. 
+	It can never be higher than 10 or lower than 2.
 		*/
 	let randomNumber = Math.random() * (max - min +1) + min;
 	//Here logical operators make sure the min or max value is not negative or bigger than 8. Min can also not be bigger then max
