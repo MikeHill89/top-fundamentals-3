@@ -1,68 +1,70 @@
-<!--In this task, you return to the problem posed in Task 1, with the aim of improving it. The three improvements we want you to make are:
+<!--
+	In this task, you return to the problem posed in Task 1, with the aim of improving it. 
+	The three improvements we want you to make are:
+  
+	-Refactor the code that generates the random number into a separate function called random(), 
+	which takes as parameters two generic bounds that the random number should be between, and returns the result.
 
-    Refactor the code that generates the random number into a separate function called random(), which takes as parameters two generic bounds that the random number should be between, and returns the result.
-    Update the chooseName() function so that it makes use of the random number function, takes the array to choose from as a parameter (making it more flexible), and returns the result.
-    Print the returned result into the paragraph (para)'s textContent.
+	-Update the chooseName() function so that it makes use of the random number function, takes the array to choose 
+	from as a parameter (making it more flexible), and returns the result.
 
-		Try updating the live code below to recreate the finished example -->
-<!DOCTYPE html>
-<html lang="en">
+	-Print the returned result into the paragraph (para)'s textContent.
+
+ --->
+<html>
 	<head>
 		<title></title>
 
-<script>
-
-const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
-const para = document.createElement('p');
-// Add your code here
-
-function random(min,max){
-
-	/* Generates a random number between 0 and 1 then multiplies it using (max - min + 1). 
-	Then it adds the min value to the result of the previous multiplication (higher operator precedence).
-	The +1 is to make the endrange inclusive.
-	For example if you wouldn't include the +1 and you would use a range of 2 to 10, then only 2,3,4,5,6,7,8 and 9 would be used.
-	The function is designed to never exceed the max value because the result of Math.random() * (max - min + 1) is always less than (max - min + 1), and min is added to this result.
-	For example, if max is 10 and min is 2, the range of possible values is 2 to 10. 
-	The result of Math.random() * (max - min + 1) will always be a decimal value between 0 and 8, because (max - min + 1) 
-	is equal to (10 - 2 + 1), which is equal to 8. *need to clarify this*
-
-	When min is added to this result, the final value will always be between 2 and 10, inclusive. 
-	It can never be higher than 10 or lower than 2.
-		*/
-	let randomNumber = Math.random() * (max - min +1) + min;
-	//Here logical operators make sure the min or max value is not negative or bigger than 8. Min can also not be bigger then max
-	if (max >8 || max <0 || max >8 || max <0 || min > max || min === max) {
-		alert('start number or end number cannot be higher than 8 or negative numbers. Min can also not exceed Max or be equal.');
-	} else {
-		/*Here the console log uses the Math.floor() method to round the random number down to the nearest whole number.
-		It takes the result returned by the randomNumber variable as an argument and then returns the nearest whole number.
-			*/
-		 console.log(Math.floor(randomNumber));
-	}
-}
-//continue here
-function chooseName(names) {
-	const section = document.querySelector('section');
-	let index = random(0, names.length -1);
-  para.textContent = names[index];
-	console.log(para.textContent);
-	section.appendChild(para);
-}
-
-// Don't edit the code below here!
-</script>
 
 	</head>
 
 	<body>
 		<section>
-			<h1>MDN Functions Skill Test v2</h1>
+			<h1>MDN Functions Skill Test</h1>
 			<button onclick="chooseName()">Random Name</button>
 			<p></p>
 		</section>
 	</body>
 
+<script>
+
+const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+const para = document.createElement('p');
+const section = document.querySelector("section");
+
+// Add your code here
+
+/* Refactored to arrow function 
+function random(min,max){
+	return Math.floor(Math.random() *  (max - min +1) + min)
+}
+
+This function generates a random number between 0 and 1 then multiplies that number by (max - min + 1).
+Then it multiplies the result and + the value of min. Then the final result is fed into Math.Floor and return as value for random.
+
+Example between 0 and 10 if Math.random would give us 0.
+
+Math.floor(0 * (10 - 0 + 1) + 0)
+Math.floor(0 * 11 + 1)
+Math.floor( 0 + 1 );
+Math.floor(1);
+=
+1
+
+if Math.random would give us 0.9999999
+*/
+let random = '';
+random = (min,max) => Math.floor(Math.random() * (max - min +1) + min);  
+
+function chooseName() {
+	const getRandomName = random(0,(names.length -1));
+   para.textContent = names[getRandomName];
+		console.log(para.textContent);
+		section.appendChild(para);
+}
+
+// Don't edit the code below here!
+</script>
 </html>
 
     
