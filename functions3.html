@@ -21,16 +21,17 @@
 	<body>
 		<section>
 			<h1>MDN Functions Skill Test</h1>
-			<button onclick="chooseName()">Random Name</button>
+			<button id="generate">Generate Random Name</button>
 			<p></p>
 		</section>
 	</body>
 
 <script>
 
-const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
-const para = document.createElement('p');
-const section = document.querySelector("section");
+const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada', 'Pete', 'John'] // an array of 9 items
+const para = document.createElement('p'); // a variable that can be referenced when creating a new paragraph to amend to the DOM.
+const section = document.querySelector("section"); // gets the section element(s) from the dom
+const generateButton = document.getElementById('generate'); // get's the button with id generate from the dom.
 
 // Add your code here
 
@@ -40,7 +41,7 @@ function random(min,max){
 }
 
 This function generates a random number between 0 and 1 then multiplies that number by (max - min + 1).
-Then it multiplies the result and + the value of min. Then the final result is fed into Math.Floor and return as value for random.
+Then it multiplies the result and + the value of min. Then the final result is fed into Math.floor and return as value for random.
 
 Example between 0 and 10 if Math.random would give us 0.
 
@@ -57,12 +58,20 @@ let random = '';
 random = (min,max) => Math.floor(Math.random() * (max - min +1) + min);  
 
 function chooseName() {
-	const getRandomName = random(0,(names.length -1));
-   para.textContent = names[getRandomName];
-		console.log(para.textContent);
-		section.appendChild(para);
+	const getRandomName = random(0,(names.length -1)); /* calls the random function with min parameters as 0 and max parameter 
+		for the parsed int length from the names array. However this counts to 10 so we substract 1 so the length goes from 0 to 9.
+		If you do not subtract 1 you will also have 10 used as a value returned an empty string as value and no name displayed.
+		The length needs to go from 0 - 9 because arrays start counting from 0, not 1.
+		*/
+   para.textContent = names[getRandomName]; /*creates the P element and uses the returned value from getRandomName as the index. 
+	 Then pulls the name from the array and returns it as a value to be used as textContent. */
+		section.appendChild(para); // Appends the paragraph as a child to the section.
 }
 
+// listens for the click on the generateButton variable value and then calls the chooseName() function
+generateButton.addEventListener("click", function(){
+	chooseName();
+});
 // Don't edit the code below here!
 </script>
 </html>
