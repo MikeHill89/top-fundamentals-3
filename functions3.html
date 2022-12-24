@@ -1,4 +1,4 @@
-<!--
+	<!--
 	In this task, you return to the problem posed in Task 1, with the aim of improving it. 
 	The three improvements we want you to make are:
   
@@ -10,70 +10,84 @@
 
 	-Print the returned result into the paragraph (para)'s textContent.
 
- --->
+ 	-->
 <html>
-	<head>
-		<title></title>
+  <head>
+    <title></title>
+  </head>
 
+  <body>
+    <section>
+      <h1>MDN Functions Skill Test</h1>
+      <button id="generate">Generate Random Name</button>
+      <p></p>
+    </section>
+  </body>
 
-	</head>
+  <script>
+    const names = [
+      "Chris",
+      "Li Kang",
+      "Anne",
+      "Francesca",
+      "Mustafa",
+      "Tina",
+      "Bert",
+      "Jada",
+      "Pete",
+      "John",
+    ]; // an array of 9 items
 
-	<body>
-		<section>
-			<h1>MDN Functions Skill Test</h1>
-			<button id="generate">Generate Random Name</button>
-			<p></p>
-		</section>
-	</body>
+		const para = document.createElement("p"); // a variable that can be referenced when creating a new paragraph to amend to the DOM.
+    const section = document.querySelector("section"); // gets the section element(s) from the dom
+    const generateButton = document.getElementById("generate"); // get's the button with id generate from the dom.
 
-<script>
+    // Add your code here
 
-const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada', 'Pete', 'John'] // an array of 9 items
-const para = document.createElement('p'); // a variable that can be referenced when creating a new paragraph to amend to the DOM.
-const section = document.querySelector("section"); // gets the section element(s) from the dom
-const generateButton = document.getElementById('generate'); // get's the button with id generate from the dom.
+    /* Refactored to arrow function 
+		function random(min,max){
+		return Math.floor(Math.random() *  (max - min +1) + min)
+		}
 
-// Add your code here
+		This function generates a random number between 0 and 1 then multiplies that number by (max - min + 1).
+		Then it multiplies the result and + the value of min. Then the final result is fed into Math.floor and return as value for random.
 
-/* Refactored to arrow function 
-function random(min,max){
-	return Math.floor(Math.random() *  (max - min +1) + min)
-}
+		Example between 0 and 10 if Math.random would give us 0.
 
-This function generates a random number between 0 and 1 then multiplies that number by (max - min + 1).
-Then it multiplies the result and + the value of min. Then the final result is fed into Math.floor and return as value for random.
+		Math.floor(0 * (10 - 0 + 1) + 0)
+		Math.floor(0 * 11 + 1)
+		Math.floor( 0 + 1 );
+		Math.floor(1);
+		=
+		1
 
-Example between 0 and 10 if Math.random would give us 0.
+		if Math.random would give us 0.9999999
+		*/
 
-Math.floor(0 * (10 - 0 + 1) + 0)
-Math.floor(0 * 11 + 1)
-Math.floor( 0 + 1 );
-Math.floor(1);
-=
-1
+    let random = "";
+    random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-if Math.random would give us 0.9999999
-*/
-let random = '';
-random = (min,max) => Math.floor(Math.random() * (max - min +1) + min);  
-
-function chooseName() {
-	const getRandomName = random(0,(names.length -1)); /* calls the random function with min parameters as 0 and max parameter 
+    function chooseName() {
+      const getRandomName = random(
+        0,
+        names.length - 1
+      ); /* calls the random function with min parameters as 0 and max parameter 
 		for the parsed int length from the names array. However this counts to 10 so we substract 1 so the length goes from 0 to 9.
 		If you do not subtract 1 you will also have 10 used as a value returned an empty string as value and no name displayed.
 		The length needs to go from 0 - 9 because arrays start counting from 0, not 1.
 		*/
-   para.textContent = names[getRandomName]; /*creates the P element and uses the returned value from getRandomName as the index. 
+      para.textContent =
+        names[
+          getRandomName
+        ]; /*creates the P element and uses the returned value from getRandomName as the index. 
 	 Then pulls the name from the array and returns it as a value to be used as textContent. */
-		section.appendChild(para); // Appends the paragraph as a child to the section.
-}
+      section.appendChild(para); // Appends the paragraph as a child to the section.
+    }
 
-// listens for the click on the generateButton variable value and then calls the chooseName() function
-generateButton.addEventListener("click", function(){
-	chooseName();
-});
-// Don't edit the code below here!
-</script>
+    // listens for the click on the generateButton variable value and then calls the chooseName() function
+    generateButton.addEventListener("click", function () {
+      chooseName();
+    });
+    // Don't edit the code below here!
+  </script>
 </html>
-
-    
