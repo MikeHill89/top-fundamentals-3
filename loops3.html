@@ -20,7 +20,7 @@
     <section class="preview"></section>
   </body>
   <script>
-  /*
+    /*
   In this final task, you are provided with the following:
 
   i — starts off with a value of 500; intended to be used as an iterator.
@@ -49,10 +49,11 @@
     }
 
     // Add your code here
-  do {
-    para.innerHTML += `<li>${i}</li>`;
-    i--;
-  } while (i >= 2);
+
+    do {
+      console.log(isPrime(i));
+      i--;
+    } while (i >= 2);
     // Don't edit the code below here!
     const section = document.querySelector("section");
     section.appendChild(para);
