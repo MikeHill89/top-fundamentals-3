@@ -49,14 +49,13 @@
     }
     // Add your code here
     do {
-      i--;
       if (!isPrime(i)) {
-        console.log(`Skipping this loop because ${i} is not a prime number.`);
+        i--;
         continue;
       }
       para.innerHTML += `<li>${i} is a prime number</li>`;
-    } while (i > 2);
-
+      i--;
+    } while (i >= 2);
     // Don't edit the code below here!
     const section = document.querySelector("section");
     section.appendChild(para);
