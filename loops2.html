@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Loops: Task 2</title>
     <style>
       p {
@@ -17,13 +17,9 @@
   </head>
 
   <body>
-
     <section class="preview">
-
-
-
+      <h1>Hello World!!!!!</h1>
     </section>
-
   </body>
   <script>
     /*
@@ -42,28 +38,33 @@
 
     You should use a type of loop that you've not used in the previous task.
     */
-    
-    const name = 'Mustafa';
-    const para = document.createElement('p');
+    console.log("Hello world!");
+    const name = "Chris";
+    const para = document.createElement("p");
 
     const phonebook = [
-      { name : 'Chris', number : '1549' },
-      { name : 'Li Kang', number : '9634' },
-      { name : 'Anne', number : '9065' },
-      { name : 'Francesca', number : '3001' },
-      { name : 'Mustafa', number : '6888' },
-      { name : 'Tina', number : '4312' },
-      { name : 'Bert', number : '7780' },
-      { name : 'Jada', number : '2282' },
-    ]
+      { name: "Chris", number: "1549" },
+      { name: "Li Kang", number: "9634" },
+      { name: "Anne", number: "9065" },
+      { name: "Francesca", number: "3001" },
+      { name: "Mustafa", number: "6888" },
+      { name: "Tina", number: "4312" },
+      { name: "Bert", number: "7780" },
+      { name: "Jada", number: "2282" },
+    ];
 
     // Add your code here
     
-      
+    for (i = 0; i < phonebook.length; i++) {
+      if (name === phonebook[i].name) {
+        para.innerText = `I found ${phonebook[i].name} with number ${phonebook[i].number}`;
+        break
+      }
+      para.innerText = `Didn't find a match try again`;
+    }
+
     // Don't edit the code below here!
-    const section = document.querySelector('section');
+    const section = document.querySelector("section");
     section.appendChild(para);
   </script>
-
 </html>
-
